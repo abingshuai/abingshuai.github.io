@@ -14,25 +14,25 @@
     
     
     
-    <title>运行时常量池 | Hexo</title>
+    <title>mysql binlog三种日志格式 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="java,jvm">
-    <meta name="description" content="运行时常量池一.不同jdk版本区别 jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存   https:&#x2F;&#x2F;blog.csdn.net&#x2F;guoxiaolongonly&#x2F;article&#x2F;details&#x2F;80425548 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;duanxz&#x2F;p&#x2F;3726574.html">
+    <meta name="keywords" content="MySQL,binlog">
+    <meta name="description" content="MySQL binlog三种日志格式一.MySQL binlog日志格式 mySQL binlog日志总共分为三种：ROW，Statement，MiXED  查询自己mysql使用的日志格式：  show variables like ‘%binlog_format%’   切换模式  set binlog_format &#x3D; statement   ##修改&#x2F;etc&#x2F;my.cnf [mysqld]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="运行时常量池">
-<meta property="og:url" content="http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/index.html">
+<meta property="og:title" content="mysql binlog三种日志格式">
+<meta property="og:url" content="http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="运行时常量池一.不同jdk版本区别 jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存   https:&#x2F;&#x2F;blog.csdn.net&#x2F;guoxiaolongonly&#x2F;article&#x2F;details&#x2F;80425548 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;duanxz&#x2F;p&#x2F;3726574.html">
+<meta property="og:description" content="MySQL binlog三种日志格式一.MySQL binlog日志格式 mySQL binlog日志总共分为三种：ROW，Statement，MiXED  查询自己mysql使用的日志格式：  show variables like ‘%binlog_format%’   切换模式  set binlog_format &#x3D; statement   ##修改&#x2F;etc&#x2F;my.cnf [mysqld]">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-30T06:53:08.499Z">
-<meta property="article:modified_time" content="2020-05-30T11:52:11.256Z">
+<meta property="article:published_time" content="2020-05-30T13:44:30.000Z">
+<meta property="article:modified_time" content="2020-05-30T13:45:13.757Z">
 <meta property="article:author" content="JavaBing">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="jvm">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="binlog">
 <meta name="twitter:card" content="summary">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -126,7 +126,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">运行时常量池</div>
+        <div class="flex-col header-title ellipsis">mysql binlog三种日志格式</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -148,15 +148,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">运行时常量池</h1>
+        <h1 class="title">mysql binlog三种日志格式</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-05-30T06:53:08.499Z" itemprop="datePublished" class="page-time">
+                <time datetime="2020-05-30T13:44:30.000Z" itemprop="datePublished" class="page-time">
   2020-05-30
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/Servlet/">Servlet</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/">MySQL</a></li></ul></li></ul>
 
             
         </h5>
@@ -173,21 +173,21 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行时常量池"><span class="post-toc-number">1.</span> <span class="post-toc-text">运行时常量池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-不同jdk版本区别"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一.不同jdk版本区别</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MySQL-binlog三种日志格式"><span class="post-toc-number">1.</span> <span class="post-toc-text">MySQL binlog三种日志格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-MySQL-binlog日志格式"><span class="post-toc-number">2.</span> <span class="post-toc-text">一.MySQL binlog日志格式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-三种格式详细分析"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">二. 三种格式详细分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-ROW"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">1. ROW</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Statement"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">2. Statement</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-MiXED"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">3. MiXED</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-运行时常量池"
+<article id="post-mysql binlog三种日志格式"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">运行时常量池</h1>
+        <h1 class="post-card-title">mysql binlog三种日志格式</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-05-30 14:53:08" datetime="2020-05-30T06:53:08.499Z"  itemprop="datePublished">2020-05-30</time>
+            <time class="post-time" title="2020-05-30 21:44:30" datetime="2020-05-30T13:44:30.000Z"  itemprop="datePublished">2020-05-30</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/Servlet/">Servlet</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/">MySQL</a></li></ul></li></ul>
 
 
 
@@ -199,16 +199,33 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><h3 id="一-不同jdk版本区别"><a href="#一-不同jdk版本区别" class="headerlink" title="一.不同jdk版本区别"></a>一.不同jdk版本区别</h3><ol>
-<li>jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存</li>
-</ol>
+            <h2 id="MySQL-binlog三种日志格式"><a href="#MySQL-binlog三种日志格式" class="headerlink" title="MySQL binlog三种日志格式"></a>MySQL binlog三种日志格式</h2><h2 id="一-MySQL-binlog日志格式"><a href="#一-MySQL-binlog日志格式" class="headerlink" title="一.MySQL binlog日志格式"></a>一.MySQL binlog日志格式</h2><ol>
+<li><p>mySQL binlog日志总共分为三种：ROW，Statement，MiXED</p>
+</li>
+<li><p>查询自己mysql使用的日志格式：</p>
 <blockquote>
-<p><a href="https://blog.csdn.net/guoxiaolongonly/article/details/80425548" target="_blank" rel="noopener">https://blog.csdn.net/guoxiaolongonly/article/details/80425548</a></p>
-<p><a href="https://www.cnblogs.com/duanxz/p/3726574.html" target="_blank" rel="noopener">https://www.cnblogs.com/duanxz/p/3726574.html</a></p>
+<p>show variables like ‘%binlog_format%’</p>
 </blockquote>
-<p>Jdk1.6及之前：有永久代，常量池1.6在方法区</p>
-<p>Jdk1.7：有永久代，但已经逐步“去永久代”，常量池1.7在堆</p>
-<p>Jdk1.8及之后：无永久代，常量池1.8在元空间</p>
+</li>
+<li><p>切换模式</p>
+<blockquote>
+<p>set binlog_format = statement</p>
+</blockquote>
+<blockquote>
+<p>##修改/etc/my.cnf</p>
+<p>[mysqld]</p>
+<p>binlog_format = ROW //定义mysql默认日志格式</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="二-三种格式详细分析"><a href="#二-三种格式详细分析" class="headerlink" title="二. 三种格式详细分析"></a>二. 三种格式详细分析</h3><h4 id="1-ROW"><a href="#1-ROW" class="headerlink" title="1. ROW"></a>1. ROW</h4><p>​    row格式文件体积大，记录数据行的变化，不会记录执行的sql语句和上下文信息，仅仅保留哪条记录经过修改。该格式也是mysql默认的日志格式，</p>
+<p><strong>优点：</strong>能够清晰的记录每一行数据的修改动态细节，不会出现statement格式中function、存储过程或trigger触发后无法正确复制的情况。</p>
+<p><strong>缺点：</strong> 磁盘io损耗较大，同一个事务若进行多条数据的修改，则会产生大量的日志内容，若主从数据库存在硬件差异，进行大量数据同步时即会产生主从延迟；因为在主从同步的场景中，row格式的binlog event在执行时会翻译成类似于sql语句的方式逐条执行，若没有建立索引或分区度太低，执行效率会非常缓慢。（通常解决方法见下文）</p>
+<h4 id="2-Statement"><a href="#2-Statement" class="headerlink" title="2. Statement"></a>2. Statement</h4><p>​    statement将每一条修改的sql语句记录至binlog中</p>
+<p><strong>优点：</strong>节约了磁盘IO的损耗，性能相比row格式较高（主要指update、alter和整表删除的场景，row格式会产生大量的日志内容）</p>
+<p><strong>缺点：</strong> 只记录执行sql语句，一些函数语句无法正确复制到从库，容易产生数据丢失；故还需要记录每条语句执行时的一些相关信息（function，存储过程或trigger）才能正确同步数据。</p>
+<h4 id="3-MiXED"><a href="#3-MiXED" class="headerlink" title="3. MiXED"></a>3. MiXED</h4><p>​    以上两种的混用，一般语句修改采用statement格式保存，涉及一些函数内容statement无法正确主从同步则采用row格式保存binlog；mysql主要依据sql语句来判断日志的保存格式，遇到表结构变更的时候就会以statement模式来记录。至于update或者delete等修改数据的语句，还是会记录所有行的变更。</p>
+<p>​    </p>
 
         </div>
 
@@ -217,12 +234,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-05-30T11:52:11.256Z" itemprop="dateUpdated">2020-05-30 19:52:11</time>
+    Last updated: <time datetime="2020-05-30T13:45:13.757Z" itemprop="dateUpdated">2020-05-30 21:45:13</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/" target="_blank" rel="external">http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" target="_blank" rel="external">http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/</a>
         
     </div>
     
@@ -243,7 +260,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binlog/" rel="tag">binlog</a></li></ul>
 
 
             
@@ -253,7 +270,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/&title=《运行时常量池》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/&title=《mysql binlog三种日志格式》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -263,22 +280,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/&title=《运行时常量池》 — Hexo&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/&title=《mysql binlog三种日志格式》 — Hexo&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运行时常量池》 — Hexo&url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mysql binlog三种日志格式》 — Hexo&url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -298,16 +315,16 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/05/30/mysql%20binlog%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B%E8%A7%A3%E6%9E%90/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/05/30/mysql%20binlog%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B%E8%A7%A3%E6%9E%90/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">mysql binlog事件类型解析</h4>
       </a>
     </div>
-  
-
   
 </nav>
 
@@ -403,7 +420,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/&title=《运行时常量池》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/&title=《mysql binlog三种日志格式》 — Hexo&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -413,22 +430,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/&title=《运行时常量池》 — Hexo&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/&title=《mysql binlog三种日志格式》 — Hexo&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《运行时常量池》 — Hexo&url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mysql binlog三种日志格式》 — Hexo&url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -439,7 +456,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/05/30/%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" alt="微信分享二维码">
 </div>
 
 
