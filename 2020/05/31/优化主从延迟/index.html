@@ -21,15 +21,15 @@
     
     
     <meta name="keywords" content="MySQL">
-    <meta name="description" content="运行时常量池一.不同jdk版本区别 jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存   https:&#x2F;&#x2F;blog.csdn.net&#x2F;guoxiaolongonly&#x2F;article&#x2F;details&#x2F;80425548 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;duanxz&#x2F;p&#x2F;3726574.html">
+    <meta name="description" content="优化主从同步延迟1. 创建主键索引 如果目前表内数据本身支持创建唯一或者主键索引，可以直接建立索引解决问题。 2. 创建所有列的联合索引 如果表确实没有办法创建主键或者唯一索引，则尝试对所有列合并添加一个联合索引。 3. 创建部分列的联合索引 由于MySQL索引长度限制，如果确实没有办法创建所有列的索引，找出区分度比较大的几列创建索引。 **4. 为表建立自增主键 以上都不能实现的话，为表创建自增">
 <meta property="og:type" content="article">
 <meta property="og:title" content="优化主从延迟">
 <meta property="og:url" content="http://yoursite.com/2020/05/31/%E4%BC%98%E5%8C%96%E4%B8%BB%E4%BB%8E%E5%BB%B6%E8%BF%9F/index.html">
 <meta property="og:site_name" content="JavaBing">
-<meta property="og:description" content="运行时常量池一.不同jdk版本区别 jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存   https:&#x2F;&#x2F;blog.csdn.net&#x2F;guoxiaolongonly&#x2F;article&#x2F;details&#x2F;80425548 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;duanxz&#x2F;p&#x2F;3726574.html">
+<meta property="og:description" content="优化主从同步延迟1. 创建主键索引 如果目前表内数据本身支持创建唯一或者主键索引，可以直接建立索引解决问题。 2. 创建所有列的联合索引 如果表确实没有办法创建主键或者唯一索引，则尝试对所有列合并添加一个联合索引。 3. 创建部分列的联合索引 由于MySQL索引长度限制，如果确实没有办法创建所有列的索引，找出区分度比较大的几列创建索引。 **4. 为表建立自增主键 以上都不能实现的话，为表创建自增">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-31T13:47:12.000Z">
-<meta property="article:modified_time" content="2020-05-31T13:17:53.825Z">
+<meta property="article:modified_time" content="2020-05-31T13:28:40.807Z">
 <meta property="article:author" content="JavaBing">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -172,7 +172,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行时常量池"><span class="post-toc-number">1.</span> <span class="post-toc-text">运行时常量池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-不同jdk版本区别"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一.不同jdk版本区别</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化主从同步延迟"><span class="post-toc-number">1.</span> <span class="post-toc-text">优化主从同步延迟</span></a></li></ol>
         </nav>
     </aside>
 
@@ -198,16 +198,14 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><h3 id="一-不同jdk版本区别"><a href="#一-不同jdk版本区别" class="headerlink" title="一.不同jdk版本区别"></a>一.不同jdk版本区别</h3><ol>
-<li>jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存</li>
-</ol>
-<blockquote>
-<p><a href="https://blog.csdn.net/guoxiaolongonly/article/details/80425548" target="_blank" rel="noopener">https://blog.csdn.net/guoxiaolongonly/article/details/80425548</a></p>
-<p><a href="https://www.cnblogs.com/duanxz/p/3726574.html" target="_blank" rel="noopener">https://www.cnblogs.com/duanxz/p/3726574.html</a></p>
-</blockquote>
-<p>Jdk1.6及之前：有永久代，常量池1.6在方法区</p>
-<p>Jdk1.7：有永久代，但已经逐步“去永久代”，常量池1.7在堆</p>
-<p>Jdk1.8及之后：无永久代，常量池1.8在元空间</p>
+            <h2 id="优化主从同步延迟"><a href="#优化主从同步延迟" class="headerlink" title="优化主从同步延迟"></a>优化主从同步延迟</h2><p><strong>1.</strong> <strong>创建主键索引</strong></p>
+<p>如果目前表内数据本身支持创建唯一或者主键索引，可以直接建立索引解决问题。</p>
+<p><strong>2. 创建所有列的联合索引</strong></p>
+<p>如果表确实没有办法创建主键或者唯一索引，则尝试对所有列合并添加一个联合索引。</p>
+<p><strong>3. 创建部分列的联合索引</strong></p>
+<p>由于MySQL索引长度限制，如果确实没有办法创建所有列的索引，找出区分度比较大的几列创建索引。</p>
+<p>**4. 为表建立自增主键</p>
+<p>以上都不能实现的话，为表创建自增id列并设置为主键。这种情况有可能会对应用造成影响，需要预先测试。</p>
 
         </div>
 
@@ -216,7 +214,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-05-31T13:17:53.825Z" itemprop="dateUpdated">2020-05-31 21:17:53</time>
+    Last updated: <time datetime="2020-05-31T13:28:40.807Z" itemprop="dateUpdated">2020-05-31 21:28:40</time>
 </span><br>
 
 
