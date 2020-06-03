@@ -20,24 +20,25 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="java,jvm">
+    <meta name="keywords" content="jvm,垃圾回收">
     <meta name="description" content="JVM基础垃圾收集算法1.标记-清除算法1.1 简介也是最早出现的垃圾收集算法，于1960年Lisp之父John McCarthy所提出(Lisp是第一门开始使用内存动态分配和垃圾收集技术的语言)； 首先标记出所有需要回收的对象，标记完成再统一回收被标记的对象，反之也可以标记存活的对象。 1.2 特征它是最基础的收集算法，但有两个明显的缺点：  执行效率不稳定，若堆中包含大量需要回收对象，此时便会">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM基础垃圾收集算法">
-<meta property="og:url" content="http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="JavaBing">
 <meta property="og:description" content="JVM基础垃圾收集算法1.标记-清除算法1.1 简介也是最早出现的垃圾收集算法，于1960年Lisp之父John McCarthy所提出(Lisp是第一门开始使用内存动态分配和垃圾收集技术的语言)； 首先标记出所有需要回收的对象，标记完成再统一回收被标记的对象，反之也可以标记存活的对象。 1.2 特征它是最基础的收集算法，但有两个明显的缺点：  执行效率不稳定，若堆中包含大量需要回收对象，此时便会">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95">
-<meta property="og:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95">
+<meta property="og:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.png">
 <meta property="og:image" content="http://yoursite.com/img/Appel%E5%BC%8F%E5%9B%9E%E6%94%B6.png">
-<meta property="article:published_time" content="2020-06-02T17:30:26.000Z">
-<meta property="article:modified_time" content="2020-06-03T15:38:19.995Z">
+<meta property="og:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95.png">
+<meta property="article:published_time" content="2020-06-04T15:48:26.000Z">
+<meta property="article:modified_time" content="2020-06-03T16:19:50.133Z">
 <meta property="article:author" content="JavaBing">
-<meta property="article:tag" content="java">
 <meta property="article:tag" content="jvm">
+<meta property="article:tag" content="垃圾回收">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95">
+<meta name="twitter:image" content="http://yoursite.com/img/%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -155,12 +156,12 @@
         <h1 class="title">JVM基础垃圾收集算法</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-06-02T17:30:26.000Z" itemprop="datePublished" class="page-time">
-  2020-06-03
+                <time datetime="2020-06-04T15:48:26.000Z" itemprop="datePublished" class="page-time">
+  2020-06-04
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">垃圾回收</a></li></ul></li></ul>
 
             
         </h5>
@@ -177,7 +178,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JVM基础垃圾收集算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">JVM基础垃圾收集算法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-标记-清除算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.标记-清除算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-简介"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.1 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-特征"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-图示"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.3  图示</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-标记复制算法"><span class="post-toc-number">3.</span> <span class="post-toc-text">2. 标记复制算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-简介"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">2.1 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-特征"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-图示"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2.3 图示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-优化（Appel式回收）"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">2.4 优化（Appel式回收）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-1-Appel式回收介绍"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">2.4.1 Appel式回收介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-2-图示"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">2.4.2 图示</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JVM基础垃圾收集算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">JVM基础垃圾收集算法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-标记-清除算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.标记-清除算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-简介"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.1 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-特征"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">1.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3-图示"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">1.3  图示</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-标记-复制算法"><span class="post-toc-number">3.</span> <span class="post-toc-text">2. 标记-复制算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-简介"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">2.1 简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-特征"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-图示"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2.3 图示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-优化（Appel式回收）"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">2.4 优化（Appel式回收）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-1-Appel式回收介绍"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">2.4.1 Appel式回收介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-4-2-图示"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">2.4.2 图示</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-标记-整理算法"><span class="post-toc-number">4.</span> <span class="post-toc-text">3. 标记-整理算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-介绍"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3.1 介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-特征"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">3.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-对比标记清除算法"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.3 对比标记清除算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-4-图示"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">3.4 图示</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -188,10 +189,10 @@
     <div class="post-card">
         <h1 class="post-card-title">JVM基础垃圾收集算法</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-06-03 01:30:26" datetime="2020-06-02T17:30:26.000Z"  itemprop="datePublished">2020-06-03</time>
+            <time class="post-time" title="2020-06-04 23:48:26" datetime="2020-06-04T15:48:26.000Z"  itemprop="datePublished">2020-06-04</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">垃圾回收</a></li></ul></li></ul>
 
 
 
@@ -216,14 +217,12 @@
 <h3 id="1-3-图示"><a href="#1-3-图示" class="headerlink" title="1.3  图示"></a>1.3  图示</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="\img\标记清除算法" alt="标记清除算法" title="">
+                    <img src="\img\标记清除算法.png" alt="标记清除算法" title="">
                 </div>
                 <div class="image-caption">标记清除算法</div>
             </figure>
 
-
-
-<h2 id="2-标记复制算法"><a href="#2-标记复制算法" class="headerlink" title="2. 标记复制算法"></a>2. 标记复制算法</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>为了解决清除算法面对大量可回收对象时执行效率低的问题，1969年Fenichel提出了“半区复制”（Semispace Copying）的gc算法，将可用内存按容量划分为相等的两块，每次只用其中一块，这一块内存用完就将存活的对象复制到另一块上面，再对已使用的内存空间（另一块）全部清理。</p>
+<h2 id="2-标记-复制算法"><a href="#2-标记-复制算法" class="headerlink" title="2. 标记-复制算法"></a>2. 标记-复制算法</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h3><p>为了解决清除算法面对大量可回收对象时执行效率低的问题，1969年Fenichel提出了“半区复制”（Semispace Copying）的gc算法，将可用内存按容量划分为相等的两块，每次只用其中一块，这一块内存用完就将存活的对象复制到另一块上面，再对已使用的内存空间（另一块）全部清理。</p>
 <h3 id="2-2-特征"><a href="#2-2-特征" class="headerlink" title="2.2 特征"></a>2.2 特征</h3><ul>
 <li>如果内存中对象大多是存活的，这样的算法就会<strong>产生大量内存间复制的开销</strong>。</li>
 <li>若多数对象是可回收的，复制开销小而且每次都是对整个半区进行回收，再次分配内存时就<strong>不用考虑空间碎片化问题</strong>。</li>
@@ -232,7 +231,7 @@
 <h3 id="2-3-图示"><a href="#2-3-图示" class="headerlink" title="2.3 图示"></a>2.3 图示</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="\img\标记复制算法" alt="标记复制算法" title="">
+                    <img src="\img\标记复制算法.png" alt="标记复制算法" title="">
                 </div>
                 <div class="image-caption">标记复制算法</div>
             </figure>
@@ -249,7 +248,21 @@
                 <div class="image-caption">Appel式回收</div>
             </figure>
 
-
+<h2 id="3-标记-整理算法"><a href="#3-标记-整理算法" class="headerlink" title="3. 标记-整理算法"></a>3. 标记-整理算法</h2><h3 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h3><p>由于标记复制算法的缺点（对存活率高的区域复制开销大，浪费50%内存或需要额外空间进行分配担保），</p>
+<p>使其无法运用在老年代；Edward Lueders于1974年提出了针对性的“标记-整理”（Mark-Compact)算法。</p>
+<p>其中标记过程于标记清除算法一致，但后续会让所有存活对象向内存空间的一端移动，后清理掉边界以外的内存。</p>
+<h3 id="3-2-特征"><a href="#3-2-特征" class="headerlink" title="3.2 特征"></a>3.2 特征</h3><ul>
+<li><strong>移动大量存活对象</strong>且要<strong>更新所有引用</strong>这些对象的地方会是一种极为负重的操作，执行操作的同时还必须<strong>暂停所有用户线程</strong>。</li>
+<li>解决了内存空间碎片化问题</li>
+</ul>
+<h3 id="3-3-对比标记清除算法"><a href="#3-3-对比标记清除算法" class="headerlink" title="3.3 对比标记清除算法"></a>3.3 对比标记清除算法</h3><p>移动对象回收时更复杂，不移动分配内存时更复杂。<strong>但从吞吐量来考虑，移动对象更划算，因为内存访问和分配在程序中的频率高</strong>。关注吞吐量的Parallel Scavenge收集器基于标记整理，而关注延迟的CMS采用标记清除。</p>
+<h3 id="3-4-图示"><a href="#3-4-图示" class="headerlink" title="3.4 图示"></a>3.4 图示</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="\img\标记整理算法.png" alt="标记整理算法" title="">
+                </div>
+                <div class="image-caption">标记整理算法</div>
+            </figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -257,12 +270,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-03T15:38:19.995Z" itemprop="dateUpdated">2020-06-03 23:38:19</time>
+    Last updated: <time datetime="2020-06-03T16:19:50.133Z" itemprop="dateUpdated">2020-06-04 00:19:50</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" target="_blank" rel="external">http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" target="_blank" rel="external">http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/</a>
         
     </div>
     
@@ -283,7 +296,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" rel="tag">垃圾回收</a></li></ul>
 
 
             
@@ -293,7 +306,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -303,22 +316,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM基础垃圾收集算法》 — JavaBing&url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM基础垃圾收集算法》 — JavaBing&url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -443,7 +456,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -453,22 +466,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&title=《JVM基础垃圾收集算法》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM基础垃圾收集算法》 — JavaBing&url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM基础垃圾收集算法》 — JavaBing&url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -479,7 +492,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/03/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/04/JVM%E5%9F%BA%E7%A1%80%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
 </div>
 
 
