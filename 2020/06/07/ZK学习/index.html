@@ -14,25 +14,25 @@
     
     
     
-    <title>Tymeleaf使用总结 - 副本 | JavaBing</title>
+    <title>ZK学习 | JavaBing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="java,spring">
-    <meta name="description" content="Tymeleaf介绍文档(上)1&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;easyui-linkbutton&quot; data-options&#x3D;&quot;iconCls:&#39;icon-tip&#39;&quot; th:data-id&#x3D;&quot;1&quot;  th:onclick&#x3D;&quot;jav">
+    <meta name="keywords" content="java,jvm">
+    <meta name="description" content="运行时常量池Zookeeper学习CAP  领导者选举 过半机制 预提交，收到ack，提交（两阶段提交）   新加入的库节点与leader同步（新的节点Xid同步为leader的）  RAFT ZAB协议 集群设置为奇数 过半原则 Observe节点 looking-&gt;follower  1.ZK如何给分布式系统提供数据一致性保障 2.ZK中领导者选举原理简单，实现发杂 3.什么是脑裂，该如">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tymeleaf使用总结 - 副本">
-<meta property="og:url" content="http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/index.html">
+<meta property="og:title" content="ZK学习">
+<meta property="og:url" content="http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="JavaBing">
-<meta property="og:description" content="Tymeleaf介绍文档(上)1&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;easyui-linkbutton&quot; data-options&#x3D;&quot;iconCls:&#39;icon-tip&#39;&quot; th:data-id&#x3D;&quot;1&quot;  th:onclick&#x3D;&quot;jav">
+<meta property="og:description" content="运行时常量池Zookeeper学习CAP  领导者选举 过半机制 预提交，收到ack，提交（两阶段提交）   新加入的库节点与leader同步（新的节点Xid同步为leader的）  RAFT ZAB协议 集群设置为奇数 过半原则 Observe节点 looking-&gt;follower  1.ZK如何给分布式系统提供数据一致性保障 2.ZK中领导者选举原理简单，实现发杂 3.什么是脑裂，该如">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-02T17:19:30.000Z">
-<meta property="article:modified_time" content="2020-06-03T09:05:50.123Z">
+<meta property="article:published_time" content="2020-06-07T04:24:17.411Z">
+<meta property="article:modified_time" content="2020-06-07T06:22:46.091Z">
 <meta property="article:author" content="JavaBing">
 <meta property="article:tag" content="java">
-<meta property="article:tag" content="spring">
+<meta property="article:tag" content="jvm">
 <meta name="twitter:card" content="summary">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -126,7 +126,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Tymeleaf使用总结 - 副本</div>
+        <div class="flex-col header-title ellipsis">ZK学习</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -148,15 +148,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Tymeleaf使用总结 - 副本</h1>
+        <h1 class="title">ZK学习</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-06-02T17:19:30.000Z" itemprop="datePublished" class="page-time">
-  2020-06-03
+                <time datetime="2020-06-07T04:24:17.411Z" itemprop="datePublished" class="page-time">
+  2020-06-07
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/Spring/">Spring</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
 
             
         </h5>
@@ -173,21 +173,21 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tymeleaf介绍文档-上"><span class="post-toc-number">1.</span> <span class="post-toc-text">Tymeleaf介绍文档(上)</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行时常量池"><span class="post-toc-number">1.</span> <span class="post-toc-text">运行时常量池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Zookeeper学习"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Zookeeper学习</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Tymeleaf使用总结 - 副本"
+<article id="post-ZK学习"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Tymeleaf使用总结 - 副本</h1>
+        <h1 class="post-card-title">ZK学习</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-06-03 01:19:30" datetime="2020-06-02T17:19:30.000Z"  itemprop="datePublished">2020-06-03</time>
+            <time class="post-time" title="2020-06-07 12:24:17" datetime="2020-06-07T04:24:17.411Z"  itemprop="datePublished">2020-06-07</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/Spring/">Spring</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
 
 
 
@@ -199,9 +199,25 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="Tymeleaf介绍文档-上"><a href="#Tymeleaf介绍文档-上" class="headerlink" title="Tymeleaf介绍文档(上)"></a>Tymeleaf介绍文档(上)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;easyui-linkbutton&quot; data-options&#x3D;&quot;iconCls:&#39;icon-tip&#39;&quot; th:data-id&#x3D;&quot;1&quot;  th:onclick&#x3D;&quot;javascript:onFlashBack([[$&#123;index.index&#125;]]);&quot;&gt;闪回&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
-
-<p>离谱</p>
+            <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><h3 id="Zookeeper学习"><a href="#Zookeeper学习" class="headerlink" title="Zookeeper学习"></a>Zookeeper学习</h3><p>CAP</p>
+<ol>
+<li>领导者选举</li>
+<li>过半机制</li>
+<li>预提交，收到ack，提交（两阶段提交）</li>
+</ol>
+<ol>
+<li>新加入的库节点与leader同步（新的节点Xid同步为leader的）</li>
+</ol>
+<p>RAFT</p>
+<p>ZAB协议</p>
+<p>集群设置为奇数 <strong>过半原则</strong></p>
+<p>Observe节点</p>
+<p>looking-&gt;follower</p>
+<blockquote>
+<p>1.ZK如何给分布式系统提供数据一致性保障</p>
+<p>2.ZK中领导者选举原理简单，实现发杂</p>
+<p>3.什么是脑裂，该如何解决</p>
+</blockquote>
 
         </div>
 
@@ -210,12 +226,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-03T09:05:50.123Z" itemprop="dateUpdated">2020-06-03 17:05:50</time>
+    Last updated: <time datetime="2020-06-07T06:22:46.091Z" itemprop="dateUpdated">2020-06-07 14:22:46</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" target="_blank" rel="external">http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" target="_blank" rel="external">http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/</a>
         
     </div>
     
@@ -236,7 +252,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
 
 
             
@@ -246,7 +262,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/&title=《Tymeleaf使用总结 - 副本》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/&title=《ZK学习》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -256,22 +272,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/&title=《Tymeleaf使用总结 - 副本》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/&title=《ZK学习》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tymeleaf使用总结 - 副本》 — JavaBing&url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ZK学习》 — JavaBing&url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -294,18 +310,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/06/03/JVM%E9%9D%A2%E8%AF%95%E9%A2%9801/" id="post-prev" class="post-nav-link">
+      <a href="/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">JVM面试题01</h4>
+        <h4 class="title">Binlog日志常用指令</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/05/G1%E6%94%B6%E9%9B%86%E5%99%A8/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Tymeleaf使用文档</h4>
+        <h4 class="title">G1收集器</h4>
       </a>
     </div>
   
@@ -403,7 +419,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/&title=《Tymeleaf使用总结 - 副本》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/&title=《ZK学习》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -413,22 +429,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/&title=《Tymeleaf使用总结 - 副本》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/&title=《ZK学习》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tymeleaf使用总结 - 副本》 — JavaBing&url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ZK学习》 — JavaBing&url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -439,7 +455,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
 </div>
 
 

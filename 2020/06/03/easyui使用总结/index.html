@@ -14,22 +14,22 @@
     
     
     
-    <title>Tymeleaf使用文档 | JavaBing</title>
+    <title>easyui使用总结 | JavaBing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="java,spring">
-    <meta name="description" content="Tymeleaf介绍文档(上)1. Tymeleaf简介1.1 什么是TymeleafTymeleaf是适用于web和独立环境的现代服务端Java模板引擎，能处理HTML，XML，JavaScript，CSS甚至纯文本。 Thymeleaf的主要目标是实现一种优雅且高度可维护的模板创建方式。为此，它以’自然模板‘的概念为基础，以不影响模板用作设计原型的方式将其逻辑注入模板文件。这样可以改善设计沟通">
+    <meta name="description" content="Easyui使用总结1.123 &lt;div id&#x3D;&quot;addFlashBack&quot;&gt;&lt;div  th:replace&#x3D;&quot;&#x2F;flashback&#x2F;binlog&#x2F;add::addBinlogFlashback&quot;&gt;&lt;&#x2F;div&gt;  &lt;&#x2F;div&gt;  12345">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tymeleaf使用文档">
-<meta property="og:url" content="http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:title" content="easyui使用总结">
+<meta property="og:url" content="http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="JavaBing">
-<meta property="og:description" content="Tymeleaf介绍文档(上)1. Tymeleaf简介1.1 什么是TymeleafTymeleaf是适用于web和独立环境的现代服务端Java模板引擎，能处理HTML，XML，JavaScript，CSS甚至纯文本。 Thymeleaf的主要目标是实现一种优雅且高度可维护的模板创建方式。为此，它以’自然模板‘的概念为基础，以不影响模板用作设计原型的方式将其逻辑注入模板文件。这样可以改善设计沟通">
+<meta property="og:description" content="Easyui使用总结1.123 &lt;div id&#x3D;&quot;addFlashBack&quot;&gt;&lt;div  th:replace&#x3D;&quot;&#x2F;flashback&#x2F;binlog&#x2F;add::addBinlogFlashback&quot;&gt;&lt;&#x2F;div&gt;  &lt;&#x2F;div&gt;  12345">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-02T17:19:30.000Z">
-<meta property="article:modified_time" content="2020-06-02T17:19:09.254Z">
+<meta property="article:modified_time" content="2020-06-04T01:59:53.769Z">
 <meta property="article:author" content="JavaBing">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="spring">
@@ -126,7 +126,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Tymeleaf使用文档</div>
+        <div class="flex-col header-title ellipsis">easyui使用总结</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -148,7 +148,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Tymeleaf使用文档</h1>
+        <h1 class="title">easyui使用总结</h1>
         <h5 class="subtitle">
             
                 <time datetime="2020-06-02T17:19:30.000Z" itemprop="datePublished" class="page-time">
@@ -173,16 +173,16 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tymeleaf介绍文档-上"><span class="post-toc-number">1.</span> <span class="post-toc-text">Tymeleaf介绍文档(上)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Tymeleaf简介"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. Tymeleaf简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-什么是Tymeleaf"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1.1 什么是Tymeleaf</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-Thymeleaf可以处理哪种模板？"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">1.2 Thymeleaf可以处理哪种模板？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-3-Dialects-The-Standard-Dialect"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">1.3  Dialects: The Standard Dialect</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Easyui使用总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">Easyui使用总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Tymeleaf使用文档"
+<article id="post-easyui使用总结"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Tymeleaf使用文档</h1>
+        <h1 class="post-card-title">easyui使用总结</h1>
         <div class="post-meta">
             <time class="post-time" title="2020-06-03 01:19:30" datetime="2020-06-02T17:19:30.000Z"  itemprop="datePublished">2020-06-03</time>
 
@@ -199,25 +199,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="Tymeleaf介绍文档-上"><a href="#Tymeleaf介绍文档-上" class="headerlink" title="Tymeleaf介绍文档(上)"></a>Tymeleaf介绍文档(上)</h2><h3 id="1-Tymeleaf简介"><a href="#1-Tymeleaf简介" class="headerlink" title="1. Tymeleaf简介"></a>1. Tymeleaf简介</h3><h4 id="1-1-什么是Tymeleaf"><a href="#1-1-什么是Tymeleaf" class="headerlink" title="1.1 什么是Tymeleaf"></a>1.1 什么是Tymeleaf</h4><p>Tymeleaf是适用于web和独立环境的现代服务端Java模板引擎，能处理HTML，XML，JavaScript，CSS甚至纯文本。</p>
-<p>Thymeleaf的主要目标是实现一种优雅且高度可维护的模板创建方式。为此，它以’自然模板‘的概念为基础，以不影响模板用作设计原型的方式将其逻辑注入模板文件。这样可以改善设计沟通，并缩小设计团队与开发团队之间的差距。</p>
-<p>Thymeleaf的设计也从一开始就考虑到了Web标准-尤其是<strong>HTML5</strong> -允许您在需要时创建完成验证的模板。</p>
-<h4 id="1-2-Thymeleaf可以处理哪种模板？"><a href="#1-2-Thymeleaf可以处理哪种模板？" class="headerlink" title="1.2 Thymeleaf可以处理哪种模板？"></a>1.2 Thymeleaf可以处理哪种模板？</h4><ul>
-<li><p>HTML</p>
-</li>
-<li><p>XML</p>
-</li>
-<li><p>TEXT</p>
-</li>
-<li><p>JAVASCRIPT</p>
-</li>
-<li><p>CSS</p>
-</li>
-<li><p>RAW</p>
-<p>有两种<em>标记</em>模板模式（<code>HTML</code>和<code>XML</code>），三个<em>文本</em>模板模式（<code>TEXT</code>，<code>JAVASCRIPT</code>和<code>CSS</code>）和<em>无操作</em>模板模式（<code>RAW</code>）。</p>
-</li>
-</ul>
-<h4 id="1-3-Dialects-The-Standard-Dialect"><a href="#1-3-Dialects-The-Standard-Dialect" class="headerlink" title="1.3  Dialects: The Standard Dialect"></a>1.3  Dialects: The Standard Dialect</h4>
+            <h2 id="Easyui使用总结"><a href="#Easyui使用总结" class="headerlink" title="Easyui使用总结"></a>Easyui使用总结</h2><h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div id&#x3D;&quot;addFlashBack&quot;&gt;</span><br><span class="line">&lt;div  th:replace&#x3D;&quot;&#x2F;flashback&#x2F;binlog&#x2F;add::addBinlogFlashback&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">   addFlashBack &#x3D; $(&#39;#dlg&#39;).window(&#123;</span><br><span class="line">      title:&#39;添加数据&#39;,</span><br><span class="line">      closed:true,</span><br><span class="line">      modal: false,</span><br><span class="line">      &#x2F;&#x2F; left: &#39;100px&#39;,</span><br><span class="line">      &#x2F;&#x2F; top: &#39;70px&#39;,</span><br><span class="line">      cache: false,</span><br><span class="line">      minimizable: false,</span><br><span class="line">      maximizable: false,</span><br><span class="line">      collapsible: false,</span><br><span class="line">      shadow: false</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>以上场景关闭父级盒子不影响子级盒子展示？？？</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -225,12 +212,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-02T17:19:09.254Z" itemprop="dateUpdated">2020-06-03 01:19:09</time>
+    Last updated: <time datetime="2020-06-04T01:59:53.769Z" itemprop="dateUpdated">2020-06-04 09:59:53</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" target="_blank" rel="external">http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</a>
         
     </div>
     
@@ -261,7 +248,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/&title=《Tymeleaf使用文档》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/&title=《easyui使用总结》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -271,22 +258,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/&title=《Tymeleaf使用文档》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/&title=《easyui使用总结》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tymeleaf使用文档》 — JavaBing&url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《easyui使用总结》 — JavaBing&url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -309,18 +296,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" id="post-prev" class="post-nav-link">
+      <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">easyui使用总结</h4>
+        <h4 class="title">Tymeleaf使用总结</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/01/JAVA%E5%8F%8D%E7%BC%96%E8%AF%91%E5%AD%97%E8%8A%82%E7%A0%81%E7%BB%86%E8%8A%82/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">JAVA反编译字节码细节</h4>
+        <h4 class="title">Tymeleaf使用文档</h4>
       </a>
     </div>
   
@@ -418,7 +405,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/&title=《Tymeleaf使用文档》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/&title=《easyui使用总结》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -428,22 +415,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/&title=《Tymeleaf使用文档》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/&title=《easyui使用总结》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tymeleaf使用文档》 — JavaBing&url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《easyui使用总结》 — JavaBing&url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -454,7 +441,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
 </div>
 
 

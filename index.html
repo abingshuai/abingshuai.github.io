@@ -160,6 +160,174 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Binlog日志常用指令"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-06-09 11:22:38" datetime="2020-06-09T03:22:38.289Z"  itemprop="datePublished">2020-06-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">Binlog日志常用指令</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        运行时常量池1. 查询binlog日志格式
+show variables like ‘%binlog_format%’;
+
+2. 查询binlog日志文件
+show binlog events in ‘mysql-bin.000046’;
+
+3. 刷新日志文件，进入下一个日志文件
+flush logs;
+
+
+    
+
+        <a href="/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ZK学习"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-06-07 12:24:17" datetime="2020-06-07T04:24:17.411Z"  itemprop="datePublished">2020-06-07</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/">ZK学习</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        运行时常量池Zookeeper学习CAP
+
+领导者选举
+过半机制
+预提交，收到ack，提交（两阶段提交）
+
+
+新加入的库节点与leader同步（新的节点Xid同步为leader的）
+
+RAFT
+ZAB协议
+集群设置为奇数 过半原则
+Observe节点
+looking-&gt;follower
+
+1.ZK如何给分布式系统提供数据一致性保障
+2.ZK中领导者选举原理简单，实现发杂
+3.什么是脑裂...
+    
+
+        <a href="/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-G1收集器"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-06-05 19:08:04" datetime="2020-06-05T11:08:04.191Z"  itemprop="datePublished">2020-06-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/06/05/G1%E6%94%B6%E9%9B%86%E5%99%A8/">G1收集器</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Garbage First收集器(G1)1. 简介
+G1开创了收集器面向局部收集的设计思路和基于Region的内存布局形式，早收录于jdk7中，被视为该版本HotSpot虚拟机的一项重要进化特征，该阶段其属于试验状态(Experimental),直到JDK8 update40发布，G1提供并发类卸载的支持，补全了其计划最后一块拼图G1主要是一款面向服务端应用的垃圾收集器,最初设计团队也是期望...
+    
+
+        <a href="/2020/06/05/G1%E6%94%B6%E9%9B%86%E5%99%A8/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-JVM基础垃圾收集算法"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -262,7 +430,7 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Tymeleaf使用总结 - 副本"
+            <article id="post-Tymeleaf使用总结"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -280,7 +448,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/">Tymeleaf使用总结 - 副本</a>
+      <a class="post-title-link" href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">Tymeleaf使用总结</a>
     </h3>
   
 
@@ -293,7 +461,56 @@
         Tymeleaf介绍文档(上)1&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;easyui-linkbutton&quot; data-options&#x3D;&quot;iconCls:&#39;icon-tip&#39;&quot; th:data-id&#x3D;&quot;1&quot;  th:onclick&#x3D;&quot;...
     
 
-        <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93%20-%20%E5%89%AF%E6%9C%AC/" class="post-more waves-effect waves-button">
+        <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/" rel="tag">spring</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-easyui使用总结"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-06-03 01:19:30" datetime="2020-06-02T17:19:30.000Z"  itemprop="datePublished">2020-06-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/Spring/">Spring</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">easyui使用总结</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Easyui使用总结1.123 &lt;div id&#x3D;&quot;addFlashBack&quot;&gt;&lt;div  th:replace&#x3D;&quot;&#x2F;flashback&#x2F;binlog&#x2F;add::addBinlogFlashback&quot;&gt;&lt;&#x2F;div&gt;  &lt;&#x2F;div&gt;
+
+12...
+    
+
+        <a href="/2020/06/03/easyui%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
@@ -468,240 +685,6 @@ Thymeleaf的主要目标是实现一种优雅且高度可维护的模板创建�
     <div class="post-footer">
         
 	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-B树和B+树解析"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-31 23:26:12" datetime="2020-05-31T15:26:12.000Z"  itemprop="datePublished">2020-05-31</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/B%E6%A0%91/">B树</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/31/B%E6%A0%91%E5%92%8CB+%E6%A0%91%E8%A7%A3%E6%9E%90/">B树和B+树解析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        B树和B+树解析1.B-Tree结构
-                
-                    
-                    
-                
-                B-Tree
-            
-
-2.B树特征
-叶子节点具有相同的深度，叶节点的指针为空
-所有索引元素不重复
-节点数据索引从左到右递增
-
-3.B+Tree结构（My...
-    
-
-        <a href="/2020/05/31/B%E6%A0%91%E5%92%8CB+%E6%A0%91%E8%A7%A3%E6%9E%90/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/B-%E6%A0%91/" rel="tag">B+树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/B%E6%A0%91/" rel="tag">B树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-红黑树解析"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-31 22:16:12" datetime="2020-05-31T14:16:12.000Z"  itemprop="datePublished">2020-05-31</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%A2%E9%BB%91%E6%A0%91/">红黑树</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/31/%E7%BA%A2%E9%BB%91%E6%A0%91%E8%A7%A3%E6%9E%90/">红黑树解析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        红黑树解析1.红黑树结构
-                
-                    
-                    
-                
-                红黑树(又称为二叉平衡树)
-            
-
-2.红黑树特征
-节点是红色或黑色
-根节点是黑色
-所有叶子节点都是黑子（叶子是null节点）
-每个红色节点的两个子节点都是黑色（从...
-    
-
-        <a href="/2020/05/31/%E7%BA%A2%E9%BB%91%E6%A0%91%E8%A7%A3%E6%9E%90/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/" rel="tag">红黑树</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-优化主从延迟"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-31 21:47:12" datetime="2020-05-31T13:47:12.000Z"  itemprop="datePublished">2020-05-31</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/">MySQL</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/31/%E4%BC%98%E5%8C%96%E4%B8%BB%E4%BB%8E%E5%BB%B6%E8%BF%9F/">优化主从延迟</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        优化主从同步延迟1. 创建主键索引
-如果目前表内数据本身支持创建唯一或者主键索引，可以直接建立索引解决问题。
-2. 创建所有列的联合索引
-如果表确实没有办法创建主键或者唯一索引，则尝试对所有列合并添加一个联合索引。
-3. 创建部分列的联合索引
-由于MySQL索引长度限制，如果确实没有办法创建所有列的索引，找出区分度比较大的几列创建索引。
-**4. 为表建立自增主键
-以上都不能实现的话，为表创...
-    
-
-        <a href="/2020/05/31/%E4%BC%98%E5%8C%96%E4%B8%BB%E4%BB%8E%E5%BB%B6%E8%BF%9F/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-mysql binlog三种日志格式"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-05-30 21:44:30" datetime="2020-05-30T13:44:30.000Z"  itemprop="datePublished">2020-05-30</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/">MySQL</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/">mysql binlog三种日志格式</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        MySQL binlog三种日志格式一.MySQL binlog日志格式
-mySQL binlog日志总共分为三种：ROW，Statement，MiXED
-
-查询自己mysql使用的日志格式：
-
-show variables like ‘%binlog_format%’
-
-
-切换模式
-
-set binlog_format = statement
-
-
-##修改/etc/my.cnf
-[mysq...
-    
-
-        <a href="/2020/05/30/mysql%20binlog%E4%B8%89%E7%A7%8D%E6%97%A5%E5%BF%97%E6%A0%BC%E5%BC%8F/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binlog/" rel="tag">binlog</a></li></ul>
 
     </div>
     
