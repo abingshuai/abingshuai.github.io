@@ -29,7 +29,7 @@
 <meta property="og:description" content="JVM面试题1. 什么是重排序？（Memory Recording）重排序是编译器或运行时环境为了优化程序性能而采取的对指令进行重新排序执行的一种手段，主要分为编译期重排序和运行期重排序（编译时、运行时） （编写java代码时，首先编译器会在编译的时候进行一次重排序，然后处理器在执行时还会对汇编后的指令集再次进行重排序；）  数据依赖性 如果两个操作访问同一个变量，且这两个操作中有一个为写操作，即">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-02T17:30:26.000Z">
-<meta property="article:modified_time" content="2020-06-09T04:36:07.016Z">
+<meta property="article:modified_time" content="2020-06-09T04:39:10.841Z">
 <meta property="article:author" content="JavaBing">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="jvm">
@@ -256,31 +256,25 @@
 </li>
 </ul>
 <h3 id="3-说一下堆栈的区别？-可再扩展"><a href="#3-说一下堆栈的区别？-可再扩展" class="headerlink" title="3. 说一下堆栈的区别？(可再扩展)"></a>3. 说一下堆栈的区别？(<u>可再扩展)</u></h3><ul>
-<li><p><strong>物理地址</strong>：</p>
-<ul>
+<li><strong>物理地址</strong>：<ul>
 <li>堆的物理地址分配对象是不连续的，所以性能较慢，在GC的时候也需要考虑到碎片化的内存空间，故有多种垃圾回收算法（标记清除、标记复制、标记整理），另外GC指的是回收堆内存。</li>
 <li>栈使用的就是数据结构中的栈，因为其先进后出的原则，物理地址分配是连续的。所以性能快。</li>
 </ul>
 </li>
-<li><p><strong>内存分配：</strong></p>
-<ul>
+<li><strong>内存分配：</strong><ul>
 <li>堆的内存空间是不连续的，故分配内存是在<strong>运行期</strong>确定的，大小不固定，但一般堆大小远远大于栈</li>
 <li>栈是连续的，所以分配内存能在<strong>编译器</strong>就确定，大小是固定的</li>
 </ul>
 </li>
-<li><p><strong>存放的内容:</strong></p>
-<ul>
+<li><strong>存放的内容:</strong><ul>
 <li>堆存放的是对象的实例和数组，因此更关注的是数据的存储</li>
 <li>栈存放:局部变量，操作数栈，返回结果，该区更关注的是程序方法的执行（静态变量放在方法区，静态对象还是放在堆）</li>
 </ul>
 </li>
-<li><p><strong>程序可见度：</strong></p>
-<ul>
+<li><strong>程序可见度：</strong><ul>
 <li>堆对于整个应用程序都是共享的可见的，属于线程公有区</li>
 <li>栈之对于线程是可见的，属于线程私有区，他的生命周期和线程相同</li>
 </ul>
-</li>
-<li><p>栈使用的就是数据结构中的栈，因为其先进后出的原则，物理地址分配是连续的。所以性能快。</p>
 </li>
 </ul>
 <h3 id="3-1-队列和栈是什么？有什么区别？"><a href="#3-1-队列和栈是什么？有什么区别？" class="headerlink" title="3.1 队列和栈是什么？有什么区别？"></a>3.1 队列和栈是什么？有什么区别？</h3><p>队列和栈都是用来预存储数据的数据结构</p>
@@ -312,7 +306,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-09T04:36:07.016Z" itemprop="dateUpdated">2020-06-09 12:36:07</time>
+    Last updated: <time datetime="2020-06-09T04:39:10.841Z" itemprop="dateUpdated">2020-06-09 12:39:10</time>
 </span><br>
 
 
@@ -405,9 +399,9 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/03/Tymeleaf%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Tymeleaf使用总结</h4>
+        <h4 class="title">Tymeleaf使用文档</h4>
       </a>
     </div>
   
