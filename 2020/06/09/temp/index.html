@@ -14,22 +14,22 @@
     
     
     
-    <title>Binlog日志常用指令 | JavaBing</title>
+    <title>temp | JavaBing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="java,jvm">
-    <meta name="description" content="运行时常量池1. 查询binlog日志格式 show variables like ‘%binlog_format%’;  2. 查询binlog日志文件 show binlog events in ‘mysql-bin.000046’;  3. 刷新日志文件，进入下一个日志文件 flush logs;  4. 查看binlog日志格式 show variables like ‘%binlog_f">
+    <meta name="description" content="运行时常量池一.不同jdk版本区别 jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存   https:&#x2F;&#x2F;blog.csdn.net&#x2F;guoxiaolongonly&#x2F;article&#x2F;details&#x2F;80425548 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;duanxz&#x2F;p&#x2F;3726574.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Binlog日志常用指令">
-<meta property="og:url" content="http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:title" content="temp">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/temp/index.html">
 <meta property="og:site_name" content="JavaBing">
-<meta property="og:description" content="运行时常量池1. 查询binlog日志格式 show variables like ‘%binlog_format%’;  2. 查询binlog日志文件 show binlog events in ‘mysql-bin.000046’;  3. 刷新日志文件，进入下一个日志文件 flush logs;  4. 查看binlog日志格式 show variables like ‘%binlog_f">
+<meta property="og:description" content="运行时常量池一.不同jdk版本区别 jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存   https:&#x2F;&#x2F;blog.csdn.net&#x2F;guoxiaolongonly&#x2F;article&#x2F;details&#x2F;80425548 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;duanxz&#x2F;p&#x2F;3726574.html">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-09T03:22:38.289Z">
-<meta property="article:modified_time" content="2020-06-09T09:08:00.450Z">
+<meta property="article:published_time" content="2020-06-09T12:27:48.790Z">
+<meta property="article:modified_time" content="2020-05-30T13:48:44.246Z">
 <meta property="article:author" content="JavaBing">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="jvm">
@@ -126,7 +126,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Binlog日志常用指令</div>
+        <div class="flex-col header-title ellipsis">temp</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -148,10 +148,10 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Binlog日志常用指令</h1>
+        <h1 class="title">temp</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-06-09T03:22:38.289Z" itemprop="datePublished" class="page-time">
+                <time datetime="2020-06-09T12:27:48.790Z" itemprop="datePublished" class="page-time">
   2020-06-09
 </time>
 
@@ -173,18 +173,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行时常量池"><span class="post-toc-number">1.</span> <span class="post-toc-text">运行时常量池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-查询binlog日志格式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 查询binlog日志格式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-查询binlog日志文件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. 查询binlog日志文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-刷新日志文件，进入下一个日志文件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 刷新日志文件，进入下一个日志文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-查看binlog日志格式"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. 查看binlog日志格式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-row格式下将sql写入日志"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5. row格式下将sql写入日志***</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行时常量池"><span class="post-toc-number">1.</span> <span class="post-toc-text">运行时常量池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-不同jdk版本区别"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一.不同jdk版本区别</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Binlog日志常用指令"
+<article id="post-temp"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Binlog日志常用指令</h1>
+        <h1 class="post-card-title">temp</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-06-09 11:22:38" datetime="2020-06-09T03:22:38.289Z"  itemprop="datePublished">2020-06-09</time>
+            <time class="post-time" title="2020-06-09 20:27:48" datetime="2020-06-09T12:27:48.790Z"  itemprop="datePublished">2020-06-09</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JVM/Java/">Java</a></li></ul></li></ul>
@@ -199,21 +199,16 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><h3 id="1-查询binlog日志格式"><a href="#1-查询binlog日志格式" class="headerlink" title="1. 查询binlog日志格式"></a>1. 查询binlog日志格式</h3><blockquote>
-<p>show variables like ‘%binlog_format%’;</p>
+            <h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><h3 id="一-不同jdk版本区别"><a href="#一-不同jdk版本区别" class="headerlink" title="一.不同jdk版本区别"></a>一.不同jdk版本区别</h3><ol>
+<li>jdk1.6方法区（被虚拟机加载的类型信息、常量、静态变量、即时编译器编译后的代码缓存等数据）置于永生代，即利用永生代实现方法区，有效回收内存</li>
+</ol>
+<blockquote>
+<p><a href="https://blog.csdn.net/guoxiaolongonly/article/details/80425548" target="_blank" rel="noopener">https://blog.csdn.net/guoxiaolongonly/article/details/80425548</a></p>
+<p><a href="https://www.cnblogs.com/duanxz/p/3726574.html" target="_blank" rel="noopener">https://www.cnblogs.com/duanxz/p/3726574.html</a></p>
 </blockquote>
-<h3 id="2-查询binlog日志文件"><a href="#2-查询binlog日志文件" class="headerlink" title="2. 查询binlog日志文件"></a>2. 查询binlog日志文件</h3><blockquote>
-<p>show binlog events in ‘mysql-bin.000046’;</p>
-</blockquote>
-<h3 id="3-刷新日志文件，进入下一个日志文件"><a href="#3-刷新日志文件，进入下一个日志文件" class="headerlink" title="3. 刷新日志文件，进入下一个日志文件"></a>3. 刷新日志文件，进入下一个日志文件</h3><blockquote>
-<p>flush logs;</p>
-</blockquote>
-<h3 id="4-查看binlog日志格式"><a href="#4-查看binlog日志格式" class="headerlink" title="4. 查看binlog日志格式"></a>4. 查看binlog日志格式</h3><blockquote>
-<p>show variables like ‘%binlog_format%’</p>
-</blockquote>
-<h3 id="5-row格式下将sql写入日志"><a href="#5-row格式下将sql写入日志" class="headerlink" title="5. row格式下将sql写入日志***"></a>5. row格式下将sql写入日志***</h3><blockquote>
-<p>binlog_rows_query_log_events =1</p>
-</blockquote>
+<p>Jdk1.6及之前：有永久代，常量池1.6在方法区</p>
+<p>Jdk1.7：有永久代，但已经逐步“去永久代”，常量池1.7在堆</p>
+<p>Jdk1.8及之后：无永久代，常量池1.8在元空间</p>
 
         </div>
 
@@ -222,12 +217,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-06-09T09:08:00.450Z" itemprop="dateUpdated">2020-06-09 17:08:00</time>
+    Last updated: <time datetime="2020-05-30T13:48:44.246Z" itemprop="dateUpdated">2020-05-30 21:48:44</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" target="_blank" rel="external">http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/06/09/temp/" target="_blank" rel="external">http://yoursite.com/2020/06/09/temp/</a>
         
     </div>
     
@@ -258,7 +253,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=《Binlog日志常用指令》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/09/temp/&title=《temp》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -268,22 +263,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=《Binlog日志常用指令》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/09/temp/&title=《temp》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/09/temp/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Binlog日志常用指令》 — JavaBing&url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《temp》 — JavaBing&url=http://yoursite.com/2020/06/09/temp/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/09/temp/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -306,18 +301,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/06/09/temp/" id="post-prev" class="post-nav-link">
+      <a href="/2020/10/14/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">temp</h4>
+        <h4 class="title">服务降级</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/07/ZK%E5%AD%A6%E4%B9%A0/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">ZK学习</h4>
+        <h4 class="title">Binlog日志常用指令</h4>
       </a>
     </div>
   
@@ -415,7 +410,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=《Binlog日志常用指令》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/06/09/temp/&title=《temp》 — JavaBing&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -425,22 +420,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&title=《Binlog日志常用指令》 — JavaBing&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/06/09/temp/&title=《temp》 — JavaBing&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/06/09/temp/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Binlog日志常用指令》 — JavaBing&url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《temp》 — JavaBing&url=http://yoursite.com/2020/06/09/temp/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/06/09/temp/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -451,7 +446,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/09/Binlog%E6%97%A5%E5%BF%97%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/06/09/temp/" alt="微信分享二维码">
 </div>
 
 
